@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Stefano Canali — philosopher of science and medicine at Politecnico di Milano, working on data, digital technologies, and knowledge production." />
+  <title>Stefano Canali — Philosopher of Science</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:    #1a1a2e;
+      --accent: #2b4590;
+      --mid:    #5a6580;
+      --rule:   #d6d9e0;
+      --bg:     #f9f9f7;
+      --gap:    clamp(2rem, 5vw, 4rem);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--ink);
+      background: var(--bg);
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid var(--rule);
+      padding: 0 var(--gap);
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-name {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.01em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── LAYOUT ── */
+    main {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 var(--gap);
+    }
+
+    section {
+      padding-top: 6rem;
+      padding-bottom: 5rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    section:last-child { border-bottom: none; }
+
+    /* ── HERO ── */
+    #about { padding-top: 9rem; }
+
+    .about-photo {
+      float: right;
+      width: 190px;
+      height: 230px;
+      object-fit: cover;
+      object-position: center top;
+      margin: 0 0 1.5rem 2.5rem;
+      filter: grayscale(15%);
+    }
+
+    .about-hero::after {
+      content: '';
+      display: table;
+      clear: both;
+    }
+
+    @media (max-width: 560px) {
+      .about-photo {
+        float: none;
+        display: block;
+        width: 130px;
+        height: 158px;
+        margin: 0 0 1.5rem 0;
+      }
+    }
+
+    .eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    h1 {
+      font-family: 'EB Garamond', serif;
+      font-weight: 400;
+      font-size: clamp(2.4rem, 5.5vw, 3.6rem);
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 0.4rem;
+    }
+
+    .subtitle {
+      font-family: 'EB Garamond', serif;
+      font-style: italic;
+      font-size: 1.25rem;
+      color: var(--mid);
+      margin-bottom: 2.5rem;
+    }
+
+    .about-body {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: #3a3a50;
+      max-width: 640px;
+    }
+
+    .about-body p + p { margin-top: 1.2rem; }
+
+    .about-body a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .about-body a:hover { border-color: var(--accent); }
+
+    .contact-line {
+      margin-top: 2.5rem;
+      font-size: 0.85rem;
+      color: var(--mid);
+    }
+
+    .contact-line a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .contact-line a:hover { border-color: var(--accent); }
+
+    /* ── NEWS ── */
+    .news-list {
+      list-style: none;
+      max-width: 640px;
+      margin-top: 2.5rem;
+    }
+
+    .news-list li {
+      padding: 0.7rem 0;
+      border-top: 1px solid var(--rule);
+      font-size: 0.95rem;
+      color: #3a3a50;
+      line-height: 1.6;
+    }
+
+    .news-list li:last-child { border-bottom: 1px solid var(--rule); }
+
+    .news-list a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .news-list a:hover { border-color: var(--accent); }
+
+    .news-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 0.6rem;
+    }
+
+    /* ── SECTION HEADINGS ── */
+    h2 {
+      font-family: 'EB Garamond', serif;
+      font-weight: 400;
+      font-size: 1.9rem;
+      margin-bottom: 2.5rem;
+      color: var(--ink);
+    }
+
+    /* ── CV ── */
+    .cv-block + .cv-block { margin-top: 2.8rem; }
+
+    .cv-category {
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .cv-entry {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 0 1.5rem;
+      padding: 0.65rem 0;
+      border-top: 1px solid var(--rule);
+    }
+
+    .cv-entry:last-child { border-bottom: 1px solid var(--rule); }
+
+    .cv-year {
+      font-size: 0.82rem;
+      color: var(--mid);
+      padding-top: 0.1rem;
+    }
+
+    .cv-detail strong {
+      display: block;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .cv-detail span {
+      font-size: 0.85rem;
+      color: var(--mid);
+    }
+
+    .cv-download {
+      display: inline-block;
+      margin-top: 2rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 1px;
+      transition: opacity 0.2s;
+    }
+
+    .cv-download:hover { opacity: 0.6; }
+
+    /* ── PUBLICATIONS ── */
+    .pub-filter {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.9rem;
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      background: transparent;
+      color: var(--mid);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .pub-year-heading {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--mid);
+      margin-top: 2.2rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.02em;
+    }
+
+    .pub-list { list-style: none; }
+
+    .pub-item {
+      padding: 1.1rem 0;
+      border-top: 1px solid var(--rule);
+    }
+
+    .pub-item:last-child { border-bottom: 1px solid var(--rule); }
+
+    .pub-meta {
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 0.3rem;
+    }
+
+    .pub-title {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.1rem;
+      line-height: 1.45;
+      color: var(--ink);
+      margin-bottom: 0.25rem;
+    }
+
+    .pub-title a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .pub-title a:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .pub-venue {
+      font-size: 0.85rem;
+      color: var(--mid);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2.5rem var(--gap);
+      font-size: 0.78rem;
+      color: var(--mid);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 560px) {
+      .cv-entry { grid-template-columns: 1fr; gap: 0.25rem; }
+      .nav-links { gap: 1.2rem; }
+      h1 { font-size: 2.2rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-name" href="#about">Stefano Canali</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#cv">CV</a></li>
+    <li><a href="#publications">Publications</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-hero">
+    <img class="about-photo" src="photo.jpg" alt="Stefano Canali" />
+    <p class="eyebrow">Philosopher of Science</p>
+    <h1>Stefano Canali</h1>
+    <p class="subtitle">Philosophy of Science &amp; Medicine</p>
+    <div class="about-body">
+      <p>I am a philosophy researcher, currently tenure-track assistant professor at the <a href="https://www.deib.polimi.it/eng/home-page" target="_blank" rel="noopener">Department of Electronics, Information and Bioengineering</a> of Politecnico di Milano. I primarily work in philosophy of science and medicine, with a focus on the role of data, digital technologies, and machine learning in knowledge production and their ethical and social implications.</p>
+      <p>I am part of the <a href="http://www.meta.polimi.it/" target="_blank" rel="noopener">META unit of humanities and social sciences</a> at Politecnico and one of the coordinators of <a href="https://philhead.org/" target="_blank" rel="noopener">PhilHead</a>, an interdisciplinary network on philosophy and medicine.</p>
+      <p>Before Politecnico, I was a postdoc at the <a href="https://www.philos.uni-hannover.de/en/" target="_blank" rel="noopener">Institute of Philosophy</a> of Leibniz Universität Hannover. I did my PhD as a member of the Bielefeld-Hannover <a href="https://www.philos.uni-hannover.de/de/forschung/grk2037" target="_blank" rel="noopener">Graduiertenkolleg 2073</a>, a graduate school dedicated to integrating the ethics and epistemology of scientific research. Previously, I studied at the <a href="https://www.ucl.ac.uk/sts/" target="_blank" rel="noopener">Science and Technology Studies Department</a> of University College London and the <a href="http://eng.dipafilo.unimi.it/ecm/home" target="_blank" rel="noopener">Department of Philosophy</a> of the University of Milan.</p>
+    </div>
+
+    <p class="news-label" style="margin-top:2.5rem;">News</p>
+    <ul class="news-list">
+      <li>🎤 In <a href="https://www.integreat.no/events/internal/workshops/2026/research-kitchen-philosophy-2026" target="_blank" rel="noopener">Oslo on June 11th</a> for an interdisciplinary workshop at Integreat (Norwegian Centre for Knowledge-driven Machine Learning).</li>
+      <li>📛 New call for ideas: we're <a href="https://app.oxfordabstracts.com/stages/82574/submitter" target="_blank" rel="noopener">looking for MA and PhD students to join us</a> at the first workshop of PIPoLS (People of the Italian Philosophy of the Life Sciences), in Milan on December 17–18.</li>
+      <li>🎤 Talk at the <a href="https://eventos.us.es/142291/programme/seminario-de-logica-lenguaje-y-ciencia.html" target="_blank" rel="noopener">Universidad de Sevilla on May 29th</a>, invited by Elena Popa to talk about medicine, digital health, and causality.</li>
+    </ul>
+
+    <p class="contact-line">
+      <a href="mailto:stefano.canali@polimi.it">stefano.canali@polimi.it</a>
+      &ensp;·&ensp;
+      <a href="https://philpapers.org" target="_blank" rel="noopener">PhilPapers</a>
+      &ensp;·&ensp;
+      <a href="https://scholar.google.com" target="_blank" rel="noopener">Google Scholar</a>
+    </p>
+    </div><!-- /about-hero -->
+  </section>
+
+  <!-- CV -->
+  <section id="cv">
+    <h2>Curriculum Vitae</h2>
+
+    <div class="cv-block">
+      <p class="cv-category">Positions</p>
+      <div class="cv-entry">
+        <span class="cv-year">2023 –</span>
+        <div class="cv-detail">
+          <strong>Tenure-track Assistant Professor</strong>
+          <span>Department of Electronics, Information and Bioengineering, Politecnico di Milano</span>
+        </div>
+      </div>
+      <div class="cv-entry">
+        <span class="cv-year">2020 – 2023</span>
+        <div class="cv-detail">
+          <strong>Postdoctoral Researcher</strong>
+          <span>Institute of Philosophy, Leibniz Universität Hannover</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cv-block">
+      <p class="cv-category">Education</p>
+      <div class="cv-entry">
+        <span class="cv-year">2020</span>
+        <div class="cv-detail">
+          <strong>PhD in Philosophy</strong>
+          <span>Graduiertenkolleg 2073, Bielefeld–Hannover</span>
+        </div>
+      </div>
+      <div class="cv-entry">
+        <span class="cv-year"></span>
+        <div class="cv-detail">
+          <strong>MA in Science and Technology Studies</strong>
+          <span>University College London</span>
+        </div>
+      </div>
+      <div class="cv-entry">
+        <span class="cv-year"></span>
+        <div class="cv-detail">
+          <strong>BA &amp; MA in Philosophy</strong>
+          <span>University of Milan</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cv-block">
+      <p class="cv-category">Affiliations</p>
+      <div class="cv-entry">
+        <span class="cv-year"></span>
+        <div class="cv-detail">
+          <strong>META — Unit of Humanities and Social Sciences</strong>
+          <span>Politecnico di Milano</span>
+        </div>
+      </div>
+      <div class="cv-entry">
+        <span class="cv-year"></span>
+        <div class="cv-detail">
+          <strong>PhilHead — Network on Philosophy and Medicine</strong>
+          <span>Co-coordinator</span>
+        </div>
+      </div>
+    </div>
+
+    <a class="cv-download" href="https://www.dropbox.com/scl/fi/p3sddg9lxvk3indrm41ym/cv-Stefano-Canali.pdf?rlkey=hx8a8g244zccahmuwqy7rgy6q&dl=1" target="_blank" rel="noopener">Download full CV (PDF, updated June 2026)</a>
+  </section>
+
+  <!-- PUBLICATIONS -->
+  <section id="publications">
+    <h2>Publications</h2>
+
+    <div class="pub-filter">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="article">Articles</button>
+      <button class="filter-btn" data-filter="chapter">Chapters &amp; Books</button>
+    </div>
+
+    <ul class="pub-list" id="pub-list">
+
+      <li class="pub-item" data-type="article" data-year="2026">
+        <p class="pub-meta">2026 · Article</p>
+        <p class="pub-title"><a href="https://doi.org/10.1016/j.shpsa.2025.102097" target="_blank" rel="noopener">Evidence-based medicine and the promises and limits of digital health and wearable technology</a></p>
+        <p class="pub-venue">Canali, Schiaffonati &amp; Aliverti. <em>Studies in History and Philosophy of Science</em>, 116.</p>
+      </li>
+
+      <li class="pub-item" data-type="article" data-year="2025">
+        <p class="pub-meta">2025 · Article</p>
+        <p class="pub-title"><a href="https://doi.org/10.1007/s11948-025-00552-1" target="_blank" rel="noopener">Big Data, Machine Learning, and Personalization in Health Systems: Ethical Issues and Emerging Trade-Offs</a></p>
+        <p class="pub-venue">Canali, Falcetta, Pavan, Roveri &amp; Schiaffonati. <em>Science and Engineering Ethics</em>, 31(5), 29.</p>
+      </li>
+
+      <li class="pub-item" data-type="article" data-year="2025">
+        <p class="pub-meta">2025 · Article</p>
+        <p class="pub-title"><a href="https://doi.org/10.4454/mefisto.9-1.1422" target="_blank" rel="noopener">Introduction. The Pragmatic Turn in the Health and Disease Debate</a></p>
+        <p class="pub-venue">Davini &amp; Canali. <em>MEFISTO. Rivista di Medicina, Filosofia, Storia</em>, 9(1), pp. 47–52.</p>
+      </li>
+
+      <li class="pub-item" data-type="article" data-year="2025">
+        <p class="pub-meta">2025 · Article</p>
+        <p class="pub-title"><a href="https://doi.org/10.12862/Lab25BNT" target="_blank" rel="noopener">Exposome Research in the Perspective of Longue Durée Political Epistemology</a></p>
+        <p class="pub-venue">Bonnin &amp; Canali. <em>Laboratorio Dell'Ispf</em>, vol. XXII [16].</p>
+      </li>
+
+      <li class="pub-item" data-type="article" data-year="2025">
+        <p class="pub-meta">2025 · Article</p>
+        <p class="pub-title"><a href="https://doi.org/10.1111/jep.70216" target="_blank" rel="noopener">Trust in Medical AI: The Case of mHealth Diabetes Apps</a></p>
+        <p class="pub-venue">Materne, Canali &amp; Chiffi. <em>Journal of Evaluation in Clinical Practice</em>, 31(5), e70216.</p>
+      </li>
+
+      <li class="pub-item" data-type="article" data-year="2025">
+        <p class="pub-meta">2025 · Article</p>
+        <p class="pub-title"><a href="https://doi.org/10.1080/1369118X.2024.2443082" target="_blank" rel="noopener">Metaverse datafication: technologies, definitions, and futures</a></p>
+        <p class="pub-venue">Hesselbein, Bory &amp; Canali. <em>Information, Communication &amp; Society</em>, online first, 1–15.</p>
+      </li>
+
+      <li class="pub-item" data-type="article" data-year="2025">
+        <p class="pub-meta">2025 · Article</p>
+        <p class="pub-title"><a href="https://doi.org/10.1080/1369118X.2024.2433548" target="_blank" rel="noopener">Six provocations for metaverse datafication: an emergent cultural, technological, and scholarly phenomenon</a></p>
+        <p class="pub-venue">Hesselbein, Bory &amp; Canali. <em>Information, Communication &amp; Society</em>, online first, 1–19.</p>
+      </li>
+
+      <li class="pub-item" data-type="chapter" data-year="2025">
+        <p class="pub-meta">2025 · Book Chapter</p>
+        <p class="pub-title"><a href="https://doi.org/10.4324/9781003528937-46" target="_blank" rel="noopener">Between quantity and quality: competing views on the role of Big Data for causal inference</a></p>
+        <p class="pub-venue">Canali &amp; Ratti. In P. Illari &amp; F. Russo (Eds.), <em>The Routledge Handbook of Causality and Causal Methods</em> (pp. 407–418). Routledge.</p>
+      </li>
+
+      <li class="pub-item" data-type="article" data-year="2024">
+        <p class="pub-meta">2024 · Article</p>
+        <p class="pub-title"><a href="https://doi.org/10.3389/fpubh.2024.1468662" target="_blank" rel="noopener">Exploring air pollution awareness: Insights from interviews with technology enthusiasts using wearable monitoring devices</a></p>
+        <p class="pub-venue">Bernasconi, Angelucci, Canali &amp; Aliverti. <em>Frontiers in Public Health</em>, 12:1468662.</p>
+      </li>
+
+      <li class="pub-item" data-type="article" data-year="2024">
+        <p class="pub-meta">2024 · Article</p>
+        <p class="pub-title"><a href="https://doi.org/10.1016/j.socscimed.2024.117056" target="_blank" rel="noopener">Putting the exposome into practice: an analysis of the promises, methods and outcomes of the European Human Exposome Network</a></p>
+        <p class="pub-venue">Fayet, Bonnin, Canali &amp; Giroux. <em>Social Science &amp; Medicine</em>, online first, 117056.</p>
+      </li>
+
+      <li class="pub-item" data-type="article" data-year="2024">
+        <p class="pub-meta">2024 · Article</p>
+        <p class="pub-title"><a href="https://doi.org/10.14283/jfa.2024.19" target="_blank" rel="noopener">Wearable Technologies for Healthy Ageing: Prospects, Challenges, and Ethical Considerations</a></p>
+        <p class="pub-venue">Canali, Ferretti, Schiaffonati &amp; Blasimme. <em>Journal of Frailty &amp; Aging</em>, 13, 149–156.</p>
+      </li>
+
+      <li class="pub-item" data-type="chapter" data-year="2024">
+        <p class="pub-meta">2024 · Book</p>
+        <p class="pub-title"><a href="https://www.carocci.it/prodotto/conoscere-la-medicina" target="_blank" rel="noopener">Conoscere la medicina: Strumenti filosofici</a></p>
+        <p class="pub-venue">Canali. Carocci editore.</p>
+      </li>
+
+      <li class="pub-item" data-type="article" data-year="2024">
+        <p class="pub-meta">2024 · Article</p>
+        <p class="pub-title"><a href="https://doi.org/10.1057/s41599-023-02561-6" target="_blank" rel="noopener">How to move beyond epistemic battles: Pluralism and contextualism at the science-society interface</a></p>
+        <p class="pub-venue">Canali &amp; Lohse. <em>Humanities and Social Sciences Communications</em>, 11(1), 98.</p>
+      </li>
+
+      <li class="pub-item" data-type="chapter" data-year="2023">
+        <p class="pub-meta">2023 · Book Chapter</p>
+        <p class="pub-title"><a href="https://doi.org/10.1007/978-981-99-5605-0_13" target="_blank" rel="noopener">Using and Interpreting FemTech Data: (Self-)Knowledge, Empowerment, and Sovereignty</a></p>
+        <p class="pub-venue">Canali &amp; Hesselbein. In L. A. Balfour (Ed.), <em>FemTech: Intersectional Interventions in Women's Digital Health</em> (pp. 291–319). Palgrave Macmillan.</p>
+      </li>
+
+      <li class="pub-item" data-type="article" data-year="2023">
+        <p class="pub-meta">2023 · Article</p>
+        <p class="pub-title"><a href="http://doi.org/10.3389/fdgth.2023.1330189" target="_blank" rel="noopener">Digital technologies for step counting: between promises of reliability and risks of reductionism</a></p>
+        <p class="pub-venue">Angelucci, Canali &amp; Aliverti. <em>Frontiers in Digital Health</em>, 5:1330189.</p>
+      </li>
+
+      <li class="pub-item" data-type="article" data-year="2023">
+        <p class="pub-meta">2023 · Article</p>
+        <p class="pub-title"><a href="https://doi.org/10.1038/d41586-023-03949-9" target="_blank" rel="noopener">Can AI deliver advice that is judgement-free for science policy?</a></p>
+        <p class="pub-venue">Canali &amp; Barone-Adesi. <em>Nature</em>, 624, 252.</p>
+      </li>
+
+      <li class="pub-item" data-type="article" data-year="2023">
+        <p class="pub-meta">2023 · Article</p>
+        <p class="pub-title"><a href="https://doi.org/10.3390/ijerph20186737" target="_blank" rel="noopener">Wearable Technologies and Stress: Toward an Ethically Grounded Approach</a></p>
+        <p class="pub-venue">Canali, De Marchi &amp; Aliverti. <em>International Journal of Environmental Research and Public Health</em>, 20(18), 6737.</p>
+      </li>
+
+      <li class="pub-item" data-type="chapter" data-year="2023">
+        <p class="pub-meta">2023 · Book Chapter</p>
+        <p class="pub-title"><a href="https://doi.org/10.1007/978-3-031-28432-8" target="_blank" rel="noopener">Which Integration for Health? Comparing Integrative Approaches for Epidemiology</a></p>
+        <p class="pub-venue">Canali. In É. Giroux, F. Merlin &amp; Y. Fayet (Eds.), <em>Integrative Approaches in Environmental Health and Exposome Research</em> (pp. 101–127). Springer.</p>
+      </li>
+
+      <li class="pub-item" data-type="article" data-year="2023">
+        <p class="pub-meta">2023 · Article</p>
+        <p class="pub-title"><a href="https://doi.org/10.2196/42815" target="_blank" rel="noopener">Fitbit Data to Assess Functional Capacity in Patients Before Elective Surgery: Pilot Prospective Observational Study</a></p>
+        <p class="pub-venue">Angelucci, Greco, Canali, Marelli et al. <em>Journal of Medical Internet Research</em>, 25, e42815.</p>
+      </li>
+
+      <li class="pub-item" data-type="article" data-year="2023">
+        <p class="pub-meta">2023 · Article</p>
+        <p class="pub-title"><a href="https://doi.org/10.3390/diagnostics13040630" target="_blank" rel="noopener">Wearable Health Technology for Preoperative Risk Assessment in Elderly Patients: The WELCOME Study</a></p>
+        <p class="pub-venue">Greco, Angelucci, Avidano, Marelli, Canali et al. <em>Diagnostics</em>, 13(4), 630–643.</p>
+      </li>
+
+      <li class="pub-item" data-type="article" data-year="2023">
+        <p class="pub-meta">2023 · Article</p>
+        <p class="pub-title"><a href="https://doi.org/10.19191/EP23.1-2.014" target="_blank" rel="noopener">Lasciarsi Merton alle spalle, ma per andare in quale direzione?</a></p>
+        <p class="pub-venue">Barone-Adesi &amp; Canali. <em>Epidemiologia &amp; Prevenzione</em>, 47(1–2).</p>
+      </li>
+
+      <li class="pub-item" data-type="article" data-year="2022">
+        <p class="pub-meta">2022 · Article</p>
+        <p class="pub-title"><a href="https://doi.org/10.1371/journal.pdig.0000104" target="_blank" rel="noopener">Challenges and recommendations for wearable devices in digital health: data quality, interoperability, health equity, fairness</a></p>
+        <p class="pub-venue">Canali, Schiaffonati &amp; Aliverti. <em>PLOS Digital Health</em>, 1(10), e0000104.</p>
+      </li>
+
+      <li class="pub-item" data-type="article" data-year="2022">
+        <p class="pub-meta">2022 · Article</p>
+        <p class="pub-title"><a href="https://doi.org/10.1007/s00146-022-01562-4" target="_blank" rel="noopener">The Paradox of the Artificial Intelligence System Development Process: the Use Case of Corporate Wellness Programs using Smart Wearables</a></p>
+        <p class="pub-venue">Angelucci, Li, Stoimenova &amp; Canali. <em>AI &amp; Society</em>.</p>
+      </li>
+
+      <li class="pub-item" data-type="article" data-year="2022">
+        <p class="pub-meta">2022 · Article</p>
+        <p class="pub-title"><a href="https://doi.org/10.1007/s13194-022-00477-7" target="_blank" rel="noopener">A Pragmatic Approach to Scientific Change: Transfer, Alignment, Influence</a></p>
+        <p class="pub-venue">Canali. <em>European Journal for Philosophy of Science</em>, 12, 48.</p>
+      </li>
+
+      <li class="pub-item" data-type="article" data-year="2022">
+        <p class="pub-meta">2022 · Article</p>
+        <p class="pub-title"><a href="https://doi.org/10.1016/j.shpsa.2022.04.006" target="_blank" rel="noopener">Reframing the Environment in Data-Intensive Health Sciences</a></p>
+        <p class="pub-venue">Canali &amp; Leonelli. <em>Studies in History and Philosophy of Science</em>, 93, 203–214.</p>
+      </li>
+
+      <li class="pub-item" data-type="article" data-year="2021">
+        <p class="pub-meta">2021 · Article</p>
+        <p class="pub-title"><a href="https://doi.org/10.1007/s13194-021-00416-y" target="_blank" rel="noopener">Follow the science? On the marginal role of the social sciences in the COVID-19 pandemic</a></p>
+        <p class="pub-venue">Lohse &amp; Canali. <em>European Journal for the Philosophy of Science</em>, 11, 99.</p>
+      </li>
+
+      <li class="pub-item" data-type="article" data-year="2021">
+        <p class="pub-meta">2021 · Article</p>
+        <p class="pub-title"><a href="https://doi.org/10.1007/s40656-021-00468-6" target="_blank" rel="noopener">Open science, data sharing and solidarity: who benefits?</a></p>
+        <p class="pub-venue">Staunton, Barragán, Canali, Ho, Leonelli et al. <em>History and Philosophy of the Life Sciences</em>, 43, 115.</p>
+      </li>
+
+      <li class="pub-item" data-type="article" data-year="2021">
+        <p class="pub-meta">2021 · Article</p>
+        <p class="pub-title"><a href="http://philsci-archive.pitt.edu/19348/1/introduzione%20PUBL.pdf" target="_blank" rel="noopener">Introduction: The philosophy, ethics, and politics of epidemiology today</a></p>
+        <p class="pub-venue">Canali &amp; Piroddi. <em>MEFISTO. Rivista di Medicina, Filosofia, Storia</em>, 5(1), 55–64.</p>
+      </li>
+
+      <li class="pub-item" data-type="article" data-year="2021">
+        <p class="pub-meta">2021 · Article</p>
+        <p class="pub-title"><a href="https://doi.org/10.1007/s40656-021-00410-w" target="_blank" rel="noopener">On evidence fiascos and judgments in COVID-19 policy</a></p>
+        <p class="pub-venue">Jukola &amp; Canali. <em>History and Philosophy of the Life Sciences</em>, 43(61).</p>
+      </li>
+
+      <li class="pub-item" data-type="article" data-year="2020">
+        <p class="pub-meta">2020 · Article</p>
+        <p class="pub-title"><a href="https://doi.org/10.3390/data5040090" target="_blank" rel="noopener">Towards a Contextual Approach to Data Quality</a></p>
+        <p class="pub-venue">Canali. <em>Data</em>, 5(4), 90.</p>
+      </li>
+
+      <li class="pub-item" data-type="article" data-year="2020">
+        <p class="pub-meta">2020 · Article</p>
+        <p class="pub-title"><a href="https://www.mdpi.com/1660-4601/17/8/2879" target="_blank" rel="noopener">What is New about the Exposome? Exploring Scientific Change in Contemporary Epidemiology</a></p>
+        <p class="pub-venue">Canali. <em>International Journal of Environmental Research and Public Health</em>, 17(8), 2879.</p>
+      </li>
+
+      <li class="pub-item" data-type="article" data-year="2020">
+        <p class="pub-meta">2020 · Article</p>
+        <p class="pub-title"><a href="https://doi.org/10.1016/j.shpsc.2019.101248" target="_blank" rel="noopener">Making Evidential Claims in Epidemiology: Three Strategies for the Study of the Exposome</a></p>
+        <p class="pub-venue">Canali. <em>Studies in History and Philosophy of Biological and Biomedical Sciences</em>, 82, 101248.</p>
+      </li>
+
+      <li class="pub-item" data-type="article" data-year="2019">
+        <p class="pub-meta">2019 · Article</p>
+        <p class="pub-title"><a href="https://doi.org/10.1007/s40656-019-0241-6" target="_blank" rel="noopener">Evaluating evidential pluralism in epidemiology: mechanistic evidence in exposome research</a></p>
+        <p class="pub-venue">Canali. <em>History and Philosophy of the Life Sciences</em>, 41(4).</p>
+      </li>
+
+      <li class="pub-item" data-type="article" data-year="2019">
+        <p class="pub-meta">2019 · Article</p>
+        <p class="pub-title"><a href="http://dx.doi.org/10.1136/bmjopen-2019-030286" target="_blank" rel="noopener">Time to care: why the humanities and the social sciences belong in the science of health</a></p>
+        <p class="pub-venue">Kelly, Clarke, Ghiara, Russo, Bockting, Boniolo, Canali et al. <em>BMJ Open</em>.</p>
+      </li>
+
+      <li class="pub-item" data-type="article" data-year="2016">
+        <p class="pub-meta">2016 · Article</p>
+        <p class="pub-title"><a href="https://doi.org/10.1177/2053951716669530" target="_blank" rel="noopener">Big Data, epistemology and causality: Knowledge in and knowledge out in EXPOsOMICS</a></p>
+        <p class="pub-venue">Canali. <em>Big Data &amp; Society</em>, 3(2).</p>
+      </li>
+
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  &copy; 2020–2026 Stefano Canali
+</footer>
+
+<script>
+  const buttons = document.querySelectorAll('.filter-btn');
+  const items   = document.querySelectorAll('.pub-item');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      items.forEach(item => {
+        item.style.display = (f === 'all' || item.dataset.type === f) ? '' : 'none';
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
